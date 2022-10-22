@@ -1,0 +1,30 @@
+/*
+Some normalization from sanitize.css (https://csstools.github.io/sanitize.css/
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+}
+
+::before,
+::after {
+  text-decoration: inherit;
+  vertical-align: inherit;
+}
+
+:where(body) {
+  margin: 0;
+}
+
+
+/* My CSS styles */
+body {
+  padding: 1em;
+}
+
+main {
+  max-inline-size: 1000px;
+  margin-inline: auto;
+}
