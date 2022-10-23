@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build"
+    "build": "vite build",
+    "preview": "sirv dist/client -BG -p 8000"
   },
   "devDependencies": {
     "@linaria/rollup": "^4.2.1",
@@ -13,6 +14,7 @@
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
+    "sirv-cli": "^2.0.2",
     "vite": "^3.1.8",
     "vite-plugin-ssr": "^0.4.43"
   },
