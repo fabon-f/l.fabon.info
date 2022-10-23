@@ -1,5 +1,4 @@
-import ReactDOMServer from 'react-dom/server'
-import React from 'react'
+import renderToString from 'preact-render-to-string'
 import { PageShell } from './PageShell'
 import { escapeInject, dangerouslySkipEscape } from 'vite-plugin-ssr'
 import type { PageContextServer } from './types'
@@ -9,7 +8,7 @@ export const passToClient = ['pageProps', 'urlPathname']
 
 export async function render(pageContext: PageContextServer) {
   const { Page, pageProps } = pageContext
-  const pageHtml = ReactDOMServer.renderToString(
+  const pageHtml = renderToString(
     <PageShell pageContext={pageContext}>
       <Page {...pageProps} />
     </PageShell>

@@ -1,4 +1,4 @@
-import react from '@vitejs/plugin-react'
+import preact from '@preact/preset-vite'
 import ssr from 'vite-plugin-ssr/plugin'
 import type { UserConfig } from 'vite'
 import linaria from '@linaria/rollup';
@@ -6,7 +6,7 @@ import linaria from '@linaria/rollup';
 const config: UserConfig = {
   plugins: [
     linaria(),
-    react(),
+    preact(),
     ssr({
       prerender: true
     })

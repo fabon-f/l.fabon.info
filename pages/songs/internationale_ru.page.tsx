@@ -1,4 +1,3 @@
-import React from 'react'
 import ParallelTranslation from '../../components/ParallelTranslation'
 
 const title = 'インターナショナル (ロシア語)'
