@@ -21,7 +21,7 @@ export function Page() {
       <section>
         <h2>ライセンス</h2>
         <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">
-          <img alt="クリエイティブ・コモンズ・ライセンス" style={{ borderWidth: 0 }} src="https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg" />
+          <img alt="クリエイティブ・コモンズ・ライセンス" style={{ borderWidth: 0 }} src="https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by-nc-sa.svg" width="80" height="15" />
         </a>
         <p>
           このサイトのコンテンツは、各ページに特記のない限り<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際 ライセンス</a>の下に提供されています。
