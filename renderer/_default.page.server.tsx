@@ -32,6 +32,7 @@ export async function render(pageContext: PageContextServer) {
         <meta property="og:title" content="${title}" />
         <meta property="og:url" content="${new URL(pageContext.urlPathname, baseUrl).toString()}/" />
         <meta name="twitter:site" content="@syobon_hinata" />
+        <meta name="twitter:card" content="summary" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
