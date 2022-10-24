@@ -16,8 +16,8 @@ export type ParallelTranslationProps = {
 }
 
 export default function ParallelTranslation({ original, translation }: ParallelTranslationProps) {
-  const originalElements =  original.split('\n\n').map((p, i) => <p key={i} style={ { whiteSpace: 'pre-wrap' } }>{p}</p>)
-  const translationElements = translation.split('\n\n').map((p, i) => <p key={i} style={ { whiteSpace: 'pre-wrap' } }>{p}</p>)
+  const originalElements =  original.trim().split('\n\n').map((p, i) => <p key={i} style={ { whiteSpace: 'pre-wrap' } }>{p}</p>)
+  const translationElements = translation.trim().split('\n\n').map((p, i) => <p key={i} style={ { whiteSpace: 'pre-wrap' } }>{p}</p>)
   return (
     <div className={wrapper}>
       <div className={`western-text ${column}`}>{originalElements}</div>
