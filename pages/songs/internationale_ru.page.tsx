@@ -1,4 +1,6 @@
+import SongPage from '../../components/songs/SongPage'
 import ParallelTranslation from '../../components/ParallelTranslation'
+import type { PageProps } from './types'
 
 const title = 'インターナショナル (ロシア語)'
 
@@ -96,14 +98,10 @@ const translation = `
 繰り返し
 `
 
-export function Page() {
+export function Page(props: PageProps) {
   return (
-    <main>
-      <h1>{title}</h1>
-      <p className='western-text'>Интернационал</p>
+    <SongPage {...props}>
       <ParallelTranslation original={originalLyrics} translation={translation} />
-
-      <a href="/songs/">曲の一覧へ戻る</a>
-    </main>
+    </SongPage>
   )
 }
