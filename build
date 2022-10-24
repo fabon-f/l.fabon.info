@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+
+if [ -n "${CF_PAGES:-}" ]; then
+  # Cloudflare Pages
+  curl -fsSL https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
+fi
+
+pnpm i
+pnpm run build
