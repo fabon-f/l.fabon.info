@@ -3,6 +3,8 @@ import { PageShell } from './PageShell'
 import { escapeInject, dangerouslySkipEscape } from 'vite-plugin-ssr'
 import type { PageContextServer } from './types'
 
+const baseUrl = 'https://l.fabon.info'
+
 // See https://vite-plugin-ssr.com/data-fetching
 export const passToClient = ['pageProps', 'urlPathname']
 
@@ -25,7 +27,11 @@ export async function render(pageContext: PageContextServer) {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="${desc}" />
+        <meta property="og:description" content="${desc}" />
         <title>${title}</title>
+        <meta property="og:title" content="${title}" />
+        <meta property="og:url" content="${new URL(pageContext.urlPathname, baseUrl).toString()}/" />
+        <meta name="twitter:site" content="@syobon_hinata" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
