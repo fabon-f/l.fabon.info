@@ -12,6 +12,8 @@ export async function render(pageContext: PageContextClient) {
   if (pageContext.isHydration) {
     hydrate(pageVNode, document.getElementById('page-view')!)
   } else {
+    const pageTitle = (pageContext.exports.documentProps ?? {}).title ?? 'ファヴォルスキー・アルヒーフ'
+    document.title = pageTitle
     renderDom(pageVNode, document.getElementById('page-view')!)
   }
 }
