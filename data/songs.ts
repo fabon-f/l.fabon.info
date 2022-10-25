@@ -118,6 +118,16 @@ const articles = {
       '作詞': 'セルゲイ・ミハルコフ',
       '作曲': 'アレクサンドル・アレクサンドロフ'
     }
+  },
+  'slavsya': {
+    title: '栄光あれ',
+    originalTitle: 'Славься',
+    lang: 'ru',
+    tags: ['ロシア帝国'],
+    creators: {
+      '作曲': 'ミハイル・グリンカ',
+      '作詞': 'ヴァシリー・ジューコフスキー、エゴール・ローゼン'
+    }
   }
 } as Record<string, SongData>
 
