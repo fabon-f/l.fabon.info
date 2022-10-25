@@ -8,6 +8,14 @@ const baseUrl = 'https://l.fabon.info'
 // See https://vite-plugin-ssr.com/data-fetching
 export const passToClient = ['pageProps', 'urlPathname']
 
+function defaultDescription(pageContext: PageContextServer) {
+  if (pageContext.urlPathname.startsWith('/songs')) {
+    return '外国語の曲の翻訳・解説'
+  } else {
+    return 'ふぁぼんが執筆・翻訳した文章のアーカイブ'
+  }
+}
+
 export async function render(pageContext: PageContextServer) {
   const { Page, pageProps } = pageContext
   const pageHtml = renderToString(
@@ -19,7 +27,7 @@ export async function render(pageContext: PageContextServer) {
   // See https://vite-plugin-ssr.com/head
   const { documentProps } = pageContext.exports
   const title = (documentProps && documentProps.title) || 'ファヴォルスキー・アルヒーフ'
-  const desc = (documentProps && documentProps.description) || 'ふぁぼんが執筆・翻訳した文章のアーカイブ'
+  const desc = (documentProps && documentProps.description) || defaultDescription(pageContext)
 
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang="ja">
