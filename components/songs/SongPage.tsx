@@ -15,10 +15,10 @@ export default function Page({ songData, children }: PageProps & { children: Com
   return (
     <main role="main">
       <div className={header}>
-        <h1>{songData.title}</h1>
-        <p className='western-text'>{songData.originalTitle}</p>
-        <table>{Object.entries(songData.creators).map(([role, name]) => <tr><th scope="row">{role}</th> <td>{name}</td></tr>)}</table>
-        <p><strong>タグ</strong>: {songData.tags.join(" ")}</p>
+        <h1>{songData?.title}</h1>
+        <p className='western-text'>{songData?.originalTitle}</p>
+        <table>{Object.entries(songData?.creators ?? {}).map(([role, name]) => <tr><th scope="row">{role}</th> <td>{name}</td></tr>)}</table>
+        <p><strong>タグ</strong>: {(songData?.tags ?? []).join(" ")}</p>
       </div>
       <div className={mainContent}>
         { children }
