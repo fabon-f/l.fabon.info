@@ -2,7 +2,7 @@ import SongPage from '../../components/songs/SongPage'
 import ParallelTranslation from '../../components/ParallelTranslation'
 import type { PageProps } from './types'
 
-const title = 'ウクライナ国歌'
+const title = 'ウクライナ国歌「ウクライナは死せず」'
 
 export const documentProps = {
   title
