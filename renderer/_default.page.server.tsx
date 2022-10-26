@@ -1,5 +1,6 @@
 import renderToString from 'preact-render-to-string'
 import { PageShell } from './PageShell'
+import { LayoutDefault } from '../layouts/LayoutDefault'
 import { escapeInject, dangerouslySkipEscape } from 'vite-plugin-ssr'
 import type { PageContextServer } from './types'
 
@@ -18,9 +19,12 @@ function defaultDescription(pageContext: PageContextServer) {
 
 export async function render(pageContext: PageContextServer) {
   const { Page, pageProps } = pageContext
+  const Layout = pageContext.exports.Layout || LayoutDefault
   const pageHtml = renderToString(
     <PageShell pageContext={pageContext}>
-      <Page {...pageProps} />
+      <Layout>
+        <Page {...pageProps} />
+      </Layout>
     </PageShell>
   )
 

@@ -24,15 +24,6 @@ Some normalization from sanitize.css (https://csstools.github.io/sanitize.css/
 
 
 /* My CSS styles */
-body {
-  padding: 1em;
-}
-
-main {
-  max-inline-size: 1000px;
-  margin-inline: auto;
-}
-
 .western-text {
   font-family: 'Open Sans', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }

@@ -1,7 +1,7 @@
 import type { PageContextBuiltIn } from 'vite-plugin-ssr'
 import type { PageContextBuiltInClient } from 'vite-plugin-ssr/client/router' // When using Client Routing
 // import type { PageContextBuiltInClient } from 'vite-plugin-ssr/client' // When using Server Routing
-import type { VNode } from 'preact'
+import type { VNode, FunctionComponent } from 'preact'
 
 type Page = (pageProps: PageProps) => VNode
 export type PageProps = {}
@@ -15,6 +15,7 @@ export type PageContextCustom = {
       title?: string
       description?: string
     }
+    Layout?: FunctionComponent
   }
 }
 
