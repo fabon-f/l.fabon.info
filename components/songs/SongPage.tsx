@@ -24,7 +24,6 @@ export default function Page({ songData, children }: PageProps & { children: Com
         { children }
       </div>
       <p><a href="/songs/">曲の一覧へ戻る</a></p>
-      <p><a href="/">サイトトップへ</a></p>
     </main>
   )
 }
