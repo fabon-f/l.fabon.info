@@ -50,6 +50,7 @@ export async function render(pageContext: PageContextServer) {
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
       </head>
       <body>
+        <div id="progress-bar"></div>
         <div id="page-view">${dangerouslySkipEscape(pageHtml)}</div>
       </body>
     </html>`

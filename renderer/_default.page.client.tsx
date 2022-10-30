@@ -2,6 +2,7 @@ import { hydrate, render as renderDom } from 'preact'
 import { PageShell } from './PageShell'
 import { LayoutDefault } from '../layouts/LayoutDefault'
 import type { PageContextClient } from './types'
+import { start as startProgressBar, finish as finishProgressBar } from './progress-bar'
 
 export async function render(pageContext: PageContextClient) {
   const { Page, pageProps } = pageContext
@@ -20,6 +21,14 @@ export async function render(pageContext: PageContextClient) {
     document.title = pageTitle
     renderDom(pageVNode, document.getElementById('page-view')!)
   }
+}
+
+export function onPageTransitionStart() {
+  startProgressBar()
+}
+
+export function onPageTransitionEnd() {
+  finishProgressBar()
 }
 
 export const clientRouting = true
