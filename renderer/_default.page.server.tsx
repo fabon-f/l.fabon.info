@@ -7,7 +7,7 @@ import type { PageContextServer } from './types'
 const baseUrl = 'https://l.fabon.info'
 
 // See https://vite-plugin-ssr.com/data-fetching
-export const passToClient = ['pageProps', 'urlPathname']
+export const passToClient = ['pageProps']
 
 function defaultDescription(pageContext: PageContextServer) {
   if (pageContext.urlPathname.startsWith('/songs')) {
