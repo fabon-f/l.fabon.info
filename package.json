@@ -13,7 +13,10 @@
     "@linaria/rollup": "^4.2.1",
     "@preact/preset-vite": "^2.4.0",
     "@tsconfig/strictest": "^1.0.2",
+    "@types/node": "^18.11.7",
     "sirv-cli": "^2.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4",
     "vite": "^3.1.8",
     "vite-plugin-ssr": "^0.4.43"
   },
