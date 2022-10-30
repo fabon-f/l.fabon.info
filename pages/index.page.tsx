@@ -24,6 +24,7 @@ export function Page() {
       <section>
         <h2>リンク集</h2>
         <ul>
+          <li><a href="https://www.fabon.info">管理者(ふぁぼん)のホームページ</a></li>
           <li><a href="https://voenpesni.web.fc2.com">ソヴィエト・ロシア軍歌集積所</a></li>
         </ul>
       </section>
