@@ -23,7 +23,7 @@ export function start() {
     clearTimeout(timer2)
   }
 
-  timer = setInterval(() => {
+  timer = window.setInterval(() => {
     progress += 100 / duration * 100
     if (progress > 95) { progress = 95 }
     barElement.style.width = `${progress}%`
@@ -37,7 +37,7 @@ export function finish() {
   const barElement = document.getElementById('progress-bar')
   if (!barElement) { return }
   barElement.style.width = '100%'
-  timer2 = setTimeout(() => {
+  timer2 = window.setTimeout(() => {
     barElement.style.opacity = '0'
   }, 300)
 }
