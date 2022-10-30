@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
-    "preview": "sirv dist/client -BG -p 8000"
+    "build": "vite build && ts-node-esm -T scripts/generate-sitemap.ts",
+    "preview": "sirv dist/client -BG -p 8000",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@babel/core": "^7.19.6",
