@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && ts-node-esm -T scripts/generate-sitemap.ts",
+    "build": "vite build && tsx scripts/generate-sitemap.ts",
     "preview": "sirv dist/client -BG -p 8000",
     "typecheck": "tsc --noEmit"
   },
@@ -18,7 +18,7 @@
     "cheerio": "1.0.0-rc.12",
     "feed": "^4.2.2",
     "sirv-cli": "^2.0.2",
-    "ts-node": "^10.9.1",
+    "tsx": "^3.11.0",
     "typescript": "^4.8.4",
     "vite": "^3.1.8",
     "vite-plugin-ssr": "^0.4.43"
