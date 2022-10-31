@@ -1,5 +1,6 @@
 import SongPage from '../../components/songs/SongPage'
 import ParallelTranslation from '../../components/ParallelTranslation'
+import { YouTubeEmbed } from '../../components/YouTubeEmbed'
 import type { PageProps } from './types'
 
 const title = '前進せよ、ロシア!'
@@ -100,6 +101,7 @@ export function Page(props: PageProps) {
         <p>政治的発言などを理由にリトアニアなどから出禁にされていることで有名な、ロシア愛国音楽界の大物オレグ・ガズマノフの曲です。</p>
         <p>なお、前奏の合唱部分はグリンカ作曲の<a href="/songs/slavsya/">栄光あれ</a>の引用です。</p>
       </section>
+      <YouTubeEmbed id="r29k_T_o9To" />
     </SongPage>
   )
 }
