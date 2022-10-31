@@ -1,0 +1,8 @@
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+/feed/*.xml
+  Access-Control-Allow-Origin: *
+
+/feed/feed.json
+  Access-Control-Allow-Origin: *

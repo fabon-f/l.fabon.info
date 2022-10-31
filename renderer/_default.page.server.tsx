@@ -42,6 +42,9 @@ export async function render(pageContext: PageContextServer) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="${desc}" />
         <meta property="og:description" content="${desc}" />
+        <link rel="alternate" type="application/rss+xml" href="${new URL('/feed/rss.xml', baseUrl).toString()}" title="RSS" >
+        <link rel="alternate" type="application/atom+xml" href="${new URL('/feed/atom.xml', baseUrl).toString()}" title="Atom">
+        <link rel="alternate" type="application/feed+json" href="${new URL('/feed/feed.json', baseUrl).toString()}" title="JSON Feed">
         <title>${title}</title>
         <meta property="og:title" content="${title}" />
         <meta property="og:url" content="${new URL(pageContext.urlPathname, baseUrl).toString()}/" />
