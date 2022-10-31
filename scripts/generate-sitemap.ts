@@ -3,7 +3,7 @@ import { join } from 'node:path'
 import * as cheerio from 'cheerio'
 import { Feed } from 'feed'
 
-const BASE_URL = 'https://l.fabon.info'
+const BASE_URL = 'https://l.fabon.info/'
 const ROOT_DIR = 'dist/client'
 
 async function findHtml(target: string) {
@@ -62,9 +62,9 @@ async function generateFeed(pageInfos: PageInfo[]) {
       link: 'https://www.fabon.info'
     },
     feedLinks: {
-      rss: 'https://l.fabon.info/feed/rss.xml',
-      atom: 'https://l.fabon.info/feed/atom.xml',
-      json: 'https://l.fabon.info/feed/feed.json'
+      rss: new URL('/feed/rss.xml', BASE_URL).toString(),
+      atom: new URL('/feed/atom.xml', BASE_URL).toString(),
+      json: new URL('/feed/feed.json', BASE_URL).toString()
     }
   })
 
