@@ -60,6 +60,11 @@ async function generateFeed(pageInfos: PageInfo[]) {
     author: {
       name: 'ふぁぼん',
       link: 'https://www.fabon.info'
+    },
+    feedLinks: {
+      rss: 'https://l.fabon.info/feed/rss.xml',
+      atom: 'https://l.fabon.info/feed/atom.xml',
+      json: 'https://l.fabon.info/feed/feed.json'
     }
   })
 
