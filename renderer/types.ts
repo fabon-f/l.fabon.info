@@ -14,6 +14,7 @@ export type PageContextCustom = {
     documentProps?: {
       title?: string
       description?: string
+      publishedAt?: string
     }
     Layout?: FunctionComponent
   }

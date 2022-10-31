@@ -32,8 +32,10 @@ export async function render(pageContext: PageContextServer) {
   const { documentProps } = pageContext.exports
   const title = (documentProps && documentProps.title) || 'ファヴォルスキー・アルヒーフ'
   const desc = (documentProps && documentProps.description) || defaultDescription(pageContext)
+  const publishedAt = (documentProps && documentProps.publishedAt) || ''
 
   const documentHtml = escapeInject`<!DOCTYPE html>
+    <!-- publishedAt: ${publishedAt} -->
     <html lang="ja">
       <head>
         <meta charset="UTF-8" />

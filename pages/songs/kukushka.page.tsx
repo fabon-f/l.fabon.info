@@ -6,7 +6,8 @@ import { css } from '@linaria/core'
 const title = 'カッコウ'
 
 export const documentProps = {
-  title
+  title,
+  publishedAt: '2022-10-25T12:41:53+09:00'
 }
 
 const originalLyrics = `

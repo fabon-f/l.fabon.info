@@ -5,7 +5,8 @@ import type { PageProps } from './types'
 const title = 'ロシア国歌 (2000年)'
 
 export const documentProps = {
-  title
+  title,
+  publishedAt: '2022-10-25T12:41:53+09:00'
 }
 
 const originalLyrics = `
