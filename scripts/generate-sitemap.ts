@@ -28,9 +28,7 @@ async function main() {
   const pages = files.filter(f => !f.endsWith('/404.html')).map(f => pathToUrl(f))
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    ${pages.map(url => '<loc>' + url + '</loc>').join('\n    ')}
-  </url>
+  ${pages.map(url => '<url><loc>' + url + '</loc></url>').join('\n  ')}
 </urlset>
 `
   writeFile('dist/client/sitemap.xml', sitemap)
