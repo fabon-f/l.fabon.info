@@ -1,5 +1,5 @@
 import { css } from '@linaria/core'
-import { useState } from 'preact/hooks'
+import { useState, useRef } from 'preact/hooks'
 
 const width = 560, height = 315
 
@@ -59,7 +59,15 @@ export function YouTubeEmbed({
   id
 }: YouTubeEmbedProps) {
   const [iframeLoaded, setIframeLoaded] = useState(false)
-  const playVideo = () => setIframeLoaded(true)
+  const iframeEl = useRef<HTMLIFrameElement>(null)
+  const playVideo = () => {
+    setIframeLoaded(true)
+    setTimeout(() => {
+      if (iframeEl.current) {
+        iframeEl.current.focus()
+      }
+    }, 0);
+  }
 
   const playButton = <button type="button" aria-label="再生" className={button} onClick={playVideo}>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 48">
@@ -67,7 +75,7 @@ export function YouTubeEmbed({
       <path d="M 45,24 27,14 27,34" fill="#fff"></path>
     </svg>
   </button>
-  const iframe = <iframe width={width} height={height} src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className={player}></iframe>
+  const iframe = <iframe width={width} height={height} src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className={player} ref={iframeEl}></iframe>
   const thumbnailElement = <img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt="" loading="lazy" className={thumbnail} onClick={playVideo} />
 
   return (
