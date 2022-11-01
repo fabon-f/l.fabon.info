@@ -1,6 +1,6 @@
 import { readdir, writeFile, readFile, mkdir } from 'node:fs/promises'
 import { join } from 'node:path'
-import * as cheerio from 'cheerio'
+import { HTMLRewriter } from 'html-rewriter-wasm'
 import { Feed } from 'feed'
 
 const BASE_URL = 'https://l.fabon.info/'
@@ -34,14 +34,34 @@ type PageInfo = {
 }
 
 async function extractPageInfo(path: string): Promise<PageInfo> {
-  const content = await readFile(join('dist/client', path), { encoding: 'utf-8' })
-  const date = (content.match(/<!-- publishedAt: ([^ ]*) -->/) || [])[1]?.trim()
-  const $ = cheerio.load(content)
-  const description = $('meta[name=description]').attr('content') ?? ''
-  const title = $('title').text()
+  const rewriter = new HTMLRewriter(() => {})
+  let description: string | null = null
+  let title = ''
+  let date: string | null = null
+
+  rewriter.on('meta[name=description]', {
+    element(el) {
+      description = el.getAttribute('content')
+    }
+  }).on('title', {
+    text(text) {
+      title += text.text
+    }
+  }).onDocument({
+    comments(comment) {
+      const matchResult = comment.text.trim().match(/publishedAt: ([^ ]+)/)
+      if (matchResult) {
+        date = matchResult[1]!.trim()
+      }
+    }
+  })
+
+  const buf = new Uint8Array(await readFile(join('dist/client', path)))
+  await rewriter.write(buf)
+  await rewriter.end()
   return {
     url: pathToUrl(path),
-    description,
+    description: description ?? '',
     title,
     date: date ? new Date(date) : null
   }
