@@ -1,5 +1,5 @@
 import { css } from '@linaria/core'
-import { useState, useRef } from 'preact/hooks'
+import { useState, useRef, useEffect } from 'preact/hooks'
 
 const width = 560, height = 315
 
@@ -60,14 +60,12 @@ export function YouTubeEmbed({
 }: YouTubeEmbedProps) {
   const [iframeLoaded, setIframeLoaded] = useState(false)
   const iframeEl = useRef<HTMLIFrameElement>(null)
-  const playVideo = () => {
-    setIframeLoaded(true)
-    setTimeout(() => {
-      if (iframeEl.current) {
-        iframeEl.current.focus()
-      }
-    }, 0);
-  }
+  const playVideo = () => setIframeLoaded(true)
+  useEffect(() => {
+    if (iframeLoaded && iframeEl.current) {
+      iframeEl.current.focus()
+    }
+  }, [iframeLoaded])
 
   const playButton = <button type="button" aria-label="再生" className={button} onClick={playVideo}>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 48">
