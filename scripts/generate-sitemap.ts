@@ -38,27 +38,49 @@ async function extractPageInfo(path: string): Promise<PageInfo> {
   let description: string | null = null
   let title = ''
   let date: string | null = null
+  const progress = {
+    description: false,
+    title: false,
+    date: false,
+    isDone() { return this.description && this.title && this.date }
+  }
 
   rewriter.on('meta[name=description]', {
     element(el) {
       description = el.getAttribute('content')
+      progress.description = true
     }
   }).on('title', {
     text(text) {
       title += text.text
+      if (text.lastInTextNode) {
+        progress.title = true
+      }
     }
   }).onDocument({
     comments(comment) {
-      const matchResult = comment.text.trim().match(/publishedAt: ([^ ]+)/)
+      const matchResult = comment.text.match(/publishedAt: ([^ ]+)/)
       if (matchResult) {
         date = matchResult[1]!.trim()
+      }
+      if (comment.text.includes('publishedAt')) {
+        progress.date = true
       }
     }
   })
 
-  const buf = new Uint8Array(await readFile(join('dist/client', path)))
-  await rewriter.write(buf)
-  await rewriter.end()
+  const buf = await readFile(join('dist/client', path))
+  try {
+    for (let i = 0; i < buf.length / 800; i++) {
+      await rewriter.write(buf.subarray(i * 800, Math.min((i + 1) * 800, buf.length)))
+      if (progress.isDone()) {
+        break
+      }
+    }
+    await rewriter.end()
+  } finally {
+    rewriter.free()
+  }
   return {
     url: pathToUrl(path),
     description: description ?? '',
